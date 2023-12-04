@@ -1,6 +1,6 @@
 import React from 'react';
 import { menuItems } from '../utils';
-import { useNavigate } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 
 function Header() {
     const navigate = useNavigate();
@@ -11,7 +11,7 @@ function Header() {
                 <ul className='flex items-center'>
                     {menuItems.map((item, i) => (
                         <li className='px-2' key={i}>
-                            <a href={item.link}>{item.name}</a>
+                            <NavLink href={item.link}>{item.name}</NavLink>
                         </li>
                     ))}
                 </ul>
