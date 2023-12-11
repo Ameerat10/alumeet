@@ -1,9 +1,41 @@
-import React from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import Footer from '../components/Footer';
 import Header from '../components/Header';
 import EventCard from '../components/EventCard';
+import { getUpcomingEvents } from '../services/apis';
+import AppContext from '../AppContext';
+import { SmallLoader } from '../components/Loaders';
+import { useNavigate } from 'react-router-dom';
 
 function UpcomingEvents(props) {
+
+    const {user} = useContext(AppContext);
+    const navigate = useNavigate();
+
+    const [loadingUpcoming, setLoadingUpcoming] = useState(false);
+    const [upcomingEvents, setUpcomingEvents] = useState([]);
+
+    useEffect(()=>{
+        const getAllUpcomingEvents = async()=>{
+            try {
+                setLoadingUpcoming(true);
+                const response = await getUpcomingEvents();
+                if(response.events){
+                    console.log(response.events)
+                    setUpcomingEvents(response.events)
+                }  
+                
+            } catch (error) {
+                console.log(error)                                
+            }
+            finally{
+                setLoadingUpcoming(false)
+            }
+        }
+
+        getAllUpcomingEvents();
+    }, [])
+
     return (
 
         <>
@@ -21,13 +53,13 @@ function UpcomingEvents(props) {
                             Lorem, ipsum dolor sit amet consectetur adipisicing elit. Pariatur dolores explicabo sequi libero similique. Culpa iusto adipisci aspernatur cumque cum.
                         </p>
                         <p className='mt-1'>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quia quod odit, non natus est itaque!</p>
-                        <button className='main__btn btn__yellow mt-2'>
+                        <button onClick={()=>navigate("/register")} className='main__btn btn__yellow mt-2'>
                             Join Now
                         </button>
                     </div>
                 </section>
                 <section className='bg__ciel flex padded__section bg__ciel'>
-                    <div className="container mx-auto w-4/5 flex items-center justify-between gap-3">
+                    <div className="container mission__sec mx-auto w-4/5 flex items-center justify-between gap-3">
                         
                         <div className='flex-1'>
                             <h3 className='main__title'>Our Mission</h3>
@@ -46,13 +78,19 @@ function UpcomingEvents(props) {
                 <section className='padded__section bg__ciel'>
                     <div className="container mx-auto w-4/5 flex flex-col gap-5">
                         <h1 className='text-center main__title'>Upcoming Events</h1>
-                        <div className='flex items-center justify-between gap-5'>
-                            {new Array(3).fill(0).map((_, i)=>(
-                                <EventCard key={i}/>
-                            
-                            ))}                       
-
-                        </div>
+                        
+                        {
+                            loadingUpcoming?
+                            <div className='full-center mx-auto w-1/2 py-5'>
+                                <SmallLoader/>
+                            </div>
+                            :  
+                            <div className='flex home__events items-center justify-center gap-5'>
+                                {upcomingEvents.map((event, i)=>(
+                                    <EventCard key={i} event={event}/>
+                                ))}                     
+                            </div>
+                        }
                     </div>
                 </section>
                 

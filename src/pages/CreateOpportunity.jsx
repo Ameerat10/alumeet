@@ -1,14 +1,14 @@
 import React, { useContext, useEffect, useRef, useState } from 'react';
 import { SmallLoader } from '../components/Loaders';
 import AppContext from '../AppContext';
-import { createEvent } from '../services/apis';
+import { createOpportunity } from '../services/apis';
 
-function CreateEvent(props) {
+function CreateOpportunity(props) {
 
     const {user, setPageTitle} = useContext(AppContext);
 
     useEffect(()=>{
-        setPageTitle("Create Event")
+        setPageTitle("Create Opportunity")
     }, [])
 
     const [loading, setLoading] = useState(false);
@@ -36,7 +36,7 @@ function CreateEvent(props) {
         console.log("FIELDS", formFields)
 
         try {
-            const response = await createEvent({...formFields, createdBy:user._id});
+            const response = await createOpportunity({...formFields, createdBy:user._id});
             if(response){
                 setMessage(
                     {
@@ -58,33 +58,31 @@ function CreateEvent(props) {
         finally{
             setLoading(false)
         }
+
     }
+
 
     return (
         <div className='app__padding flex flex-col gap-5'>
             <section ref={messageRef}>
                 <div className='flex justify-between'>
-                    <h3 className="app__section__title">Create Event</h3>
+                    <h3 className="app__section__title">Create Opportunity</h3>
                 </div>
                 <p className='mt-3 w-3/4 mb-5'>
                     Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia molestiae quibusdam veritatis, error, ab repellat labore illum quo, natus voluptas consectetur in laboriosam? Harum, error amet ducimus reiciendis accusamus dignissimos?
                 </p>
 
-                <form onSubmit={handleSubmit} className='w-1/2 create__event--form flex flex-col items-center gap-3'>
+                <form onSubmit={handleSubmit} className='w-1/2 create__opportunity--form flex flex-col items-center gap-3'>
                     {message.text && <div className={`border w-full ${message.type=="error" ? "label__error":"label__success"}`}>{message.text}</div>}
 
                     <div className="form__row flex items-center gap-2">
                         <div className='form__group'>
-                            <label htmlFor="title">Event name</label>
+                            <label htmlFor="title">Opportunity name</label>
                             <input type="text" id='title' name='title' onChange={handleInputChange} required/>
                         </div>
                         <div className='form__group'>
-                            <label htmlFor="category">Event category</label>
-                            <select name="category" id="category" onChange={handleInputChange} required>
-                                <option value="">--Select event category--</option>
-                                <option value="networking">Networking</option>
-                                <option value="professional development">Professional Development</option>
-                            </select>
+                            <label htmlFor="subject">Subject</label>
+                            <input type="text" id='subject' name='subject' onChange={handleInputChange} required/>
                         </div>
                     </div>
 
@@ -94,20 +92,11 @@ function CreateEvent(props) {
                             <input type="date" id='date' name='date' onChange={handleInputChange} required/>
                         </div>
                         <div className='form__group'>
-                            <label htmlFor="location">Location</label>
-                            <input type="text" id='location' name='location' onChange={handleInputChange} required/>
+                            <label htmlFor="link">Link</label>
+                            <input type="text" id='link' name='link' onChange={handleInputChange} required/>
                         </div>
                     </div>
-                    <div className="form__row flex items-center gap-2">
-                        <div className='form__group'>
-                            <label htmlFor="startTime">Start time</label>
-                            <input type="time" id='startTime' name='startTime' onChange={handleInputChange} required/>
-                        </div>
-                        <div className='form__group'>
-                            <label htmlFor="endTime">End Time</label>
-                            <input type="time" id='endTime' name='endTime' onChange={handleInputChange} required/>
-                        </div>
-                    </div>
+    
                     <div className="form__row flex items-center gap-2">
                         <div className='form__group'>
                             <label htmlFor="description">Description</label>
@@ -124,7 +113,7 @@ function CreateEvent(props) {
                     
                     <div className="relative register__action">
                         <button className="main__btn btn__yellow">
-                            ADD EVENT
+                            ADD OPPORTUNITY
                         </button>
                         {loading && <SmallLoader/>}
                     </div>
@@ -136,4 +125,4 @@ function CreateEvent(props) {
     );
 }
 
-export default CreateEvent;
+export default CreateOpportunity;

@@ -1,60 +1,102 @@
-import React, { useEffect } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
+import { API_URL, getEvent } from '../services/apis';
+import { SmallLoader } from '../components/Loaders';
+import AppContext from '../AppContext';
 
 function ViewEvent(props) {
 
-    const {id} = useParams();
+    const {setPageTitle} = useContext(AppContext);
 
-    useEffect(()=>{console.log(id)}, []);
+    const {id} = useParams();
 
     const navigate = useNavigate();
 
-    const eventData = {
-        id: 1,
-        title: "Birthday Party for John Doe",
-        category: "Party",
-        date: "2023-04-05",
-        location: "John's House",
-        startTime: "8 AM",
-        endTime: "10 PM",
-        imageURL: "/images/party.jpg",
-        description:"Lorem ipsum dolor, sit amet consectetur adipisicing elit. Laudantium aspernatur perspiciatis pariatur suscipit eius modi illo inventore. Natus eos cupiditate omnis eaque repellat! Quae, vitae!"
-    }
 
-    const keysMapper = {
-        id:"ID",
-        title:"Event Title",
-        category:"Event Category",
-        date:"Date",
-        location:"Location",
-        startTime:"Start Time",
-        endTime:"End Time",
-        description:"Description",
-        imageURL:"Event Banner"
-    }
+    const [loading, setLoading] = useState(false);
+    const [event, setEvent] = useState({});
+
+    useEffect(()=>{
+        setPageTitle("View Event")
+        const getEventDetails = async()=>{
+            try {
+                setLoading(true);
+                const response = await getEvent(id);
+                if(response.event){
+                    console.log(response.event)
+                    setEvent(response.event)
+                }
+                
+            } catch (error) {
+                console.log(error)                                
+            }
+            finally{
+                setLoading(false)
+            }
+        }
+
+        getEventDetails();
+    }, [])
 
     return (
         <div className='app__padding flex flex-col gap-5'>
-            <section>
-                <div className='flex justify-between'>
-                    <h3 className="app__section__title">View Event - Careers Masters Program</h3>
-                    <div>
-                        <button className="main__btn btn__yellow" onClick={()=>navigate(`/event/${id}/edit`)}>Update Event</button>
-                    </div>
+            {loading?
+                <div className='h-full pt-2 full-center'>
+                    <SmallLoader/>
                 </div>
-                <p className='mt-3 w-3/4 mb-5'>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia molestiae quibusdam veritatis, error, ab repellat labore illum quo, natus voluptas consectetur in laboriosam? Harum, error amet ducimus reiciendis accusamus dignissimos?
-                </p>
-                <div className='flex flex-col gap-2'>
-                    {Object.entries(eventData).map(([key, value], i)=>(
-                        <div className='flex'>
-                            <span className='view__event--label'>{keysMapper[key]}</span>
-                            <p className='font-600 flex-1'>{value}</p>
+                :
+                <section>
+                    <span onClick={()=>navigate(-1)} className='cursor-pointer mb-1'><i className='fas fa-arrow-left'></i>&nbsp;&nbsp;Back</span>
+                    <div className='flex justify-between action__title'>
+                        <h3 className="app__section__title">View Event - {event.title}</h3>
+                        <div>
+                            <button className="main__btn btn__yellow" onClick={()=>navigate(`/event/${id}/edit`)}>Update Event</button>
                         </div>
-                    ))
-                    }
-                </div>
-            </section>
+                    </div>
+                    <p className='mt-3 w-3/4 mb-5'>
+                        {event.description}
+                    </p>
+                    <div className='flex flex-col gap-2'>
+                        <div className='flex'>
+                            <span className='view__event--label'>ID</span>
+                            <p className='font-600 flex-1'>{event._id}</p>
+                        </div>
+                        <div className='flex'>
+                            <span className='view__event--label'>Event Category</span>
+                            <p className='font-600 flex-1'>{event.category}</p>
+                        </div>
+                        <div className='flex'>
+                            <span className='view__event--label'>Event Date</span>
+                            <p className='font-600 flex-1'>{new Date(event.date).toLocaleDateString()}</p>
+                        </div>
+                        <div className='flex'>
+                            <span className='view__event--label'>Event Location</span>
+                            <p className='font-600 flex-1'>{event.location}</p>
+                        </div>
+                        <div className='flex'>
+                            <span className='view__event--label'>Event Start Time</span>
+                            <p className='font-600 flex-1'>{event.startTime}</p>
+                        </div>
+                        <div className='flex'>
+                            <span className='view__event--label'>Event End Time</span>
+                            <p className='font-600 flex-1'>{event.endTime}</p>
+                        </div>
+                        <div className='flex flex-col gap-2'>
+                            <span className='view__event--label'>Event Banner</span>
+                            <p className='font-600 flex-1'>
+                                {
+                                    event.image?
+                                    <img src={`${API_URL}/images/${event.image}`} alt="" className='desc__img' />
+                                    :
+                                    "No Image"
+                                }
+                            </p>
+                        </div>
+
+                    </div>
+                </section>
+
+            }
         </div>
     );
 }

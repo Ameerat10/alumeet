@@ -150,7 +150,7 @@ a:hover{color: var(--color-secondary);}
 }
 
 .about__hero{
-  height: 50vh;
+  height: 75vh;
 }
 
 .about__hero--cta{
@@ -162,6 +162,10 @@ a:hover{color: var(--color-secondary);}
 .btn__yellow{
   background-color: var(--color-secondary);
   color: white;
+}
+
+.text-yellow{
+  color: var(--color-secondary);
 }
 
 .btn__yellow:hover{
@@ -251,11 +255,18 @@ form a{
   font-size: 90%;
 }
 
-.dashboard__page .event__card .event__img{
+.dashboard__page .event__card,
+.opportunities__page .event__card{
+  width: 20rem;
+}
+
+.dashboard__page .event__card .event__img,
+.opps__list .event__card .event__img{
   height: 10rem;
 }
 
-.dashboard__page .event__card .event__img img{
+.dashboard__page .event__card .event__img img,
+.opps__list .event__card .event__img img{
   height: 100%;
   object-fit: cover;
 }
@@ -292,4 +303,282 @@ form a{
 
 .view__event--label{
   width: 10rem;
+}
+
+.label__error{
+  background-color: rgba(255, 0, 0, 0.13);
+  color: red;
+  padding: .5rem 1rem;
+  border-radius: 5px;
+}
+
+.label__success{
+  background-color: rgba(0, 255, 0, 0.13);
+  color: green;
+  padding: .5rem 1rem;
+  border-radius: 5px;
+
+}
+
+.small__loader {
+  display: block;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  position: relative;
+  animation: rotate 1s linear infinite
+}
+.small__loader::before , .small__loader::after {
+  content: "";
+  box-sizing: border-box;
+  position: absolute;
+  inset: 0px;
+  border-radius: 50%;
+  border: 5px solid #EF801A;
+  animation: prixClipFix 2s linear infinite ;
+}
+.small__loader::after{
+  transform: rotate3d(90, 90, 0, 180deg );
+  border-color: var(--color-main);
+}
+
+@keyframes rotate {
+  0%   {transform: rotate(0deg)}
+  100%   {transform: rotate(360deg)}
+}
+
+@keyframes prixClipFix {
+    0%   {clip-path:polygon(50% 50%,0 0,0 0,0 0,0 0,0 0)}
+    50%  {clip-path:polygon(50% 50%,0 0,100% 0,100% 0,100% 0,100% 0)}
+    75%, 100%  {clip-path:polygon(50% 50%,0 0,100% 0,100% 100%,100% 100%,100% 100%)}
+}
+
+.register__action .small__loader{
+  position: absolute;
+  right: -5rem;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.event__card .small__loader{
+  right: 0;
+}
+
+.main__app--loader .small__loader{
+  display: block;
+  width: 5rem;
+  height: 5rem;
+}
+
+.btn__logout{
+  background-color: rgb(82, 5, 5);
+  border: none;
+  padding: .5rem 2rem;
+  color: white;
+  border-radius: 5px;
+}
+
+.app__header{
+  z-index: 999;
+}
+
+.table__loader{
+  border: 1px solid rgba(128, 128, 128, 0.233);
+}
+
+.table__img{
+  width: 3rem;
+}
+
+.table__action{
+  width: 5rem;
+}
+
+.desc__img{
+  width: 20rem;
+}
+
+.joined__label{
+  background-color: rgba(0, 255, 0, 0.13);
+  color: green;
+  padding: .5rem 1rem;
+  border-radius: 5px;
+  font-weight: 900;
+}
+
+.home__events .event__card{
+  width: 30rem;
+  height: auto;
+}
+
+.home__events{
+  align-items: stretch !important;
+}
+
+.underline{
+  text-decoration: underline;
+}
+
+.delete__icon .small__loader{
+  scale: .75;
+}
+
+.event__img {
+  height: 15rem;
+  overflow: hidden;
+}
+
+header input[type="checkbox"]:checked ~ #sidebarMenu {
+  transform: translateX(0);
+}
+
+header input[type=checkbox] {
+  transition: all 0.3s;
+  box-sizing: border-box;
+  display: none;
+}
+.sidebarIconToggle {
+  transition: all 0.3s;
+  box-sizing: border-box;
+  cursor: pointer;
+  position: absolute;
+  z-index: 99;
+  height: 100%;
+  width: 100%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  height: 22px;
+  width: 22px;
+}
+.spinner {
+  transition: all 0.3s;
+  box-sizing: border-box;
+  position: absolute;
+  height: 3px;
+  width: 100%;
+  background-color: #fff;
+}
+.horizontal {
+  transition: all 0.3s;
+  box-sizing: border-box;
+  position: relative;
+  float: left;
+  margin-top: 3px;
+}
+.diagonal.part-1 {
+  position: relative;
+  transition: all 0.3s;
+  box-sizing: border-box;
+  float: left;
+}
+.diagonal.part-2 {
+  transition: all 0.3s;
+  box-sizing: border-box;
+  position: relative;
+  float: left;
+  margin-top: 3px;
+}
+header input[type=checkbox]:checked ~ .sidebarIconToggle > .horizontal {
+  transition: all 0.3s;
+  box-sizing: border-box;
+  opacity: 0;
+}
+header input[type=checkbox]:checked ~ .sidebarIconToggle > .diagonal.part-1 {
+  transition: all 0.3s;
+  box-sizing: border-box;
+  transform: rotate(135deg);
+  margin-top: 8px;
+}
+header input[type=checkbox]:checked ~ .sidebarIconToggle > .diagonal.part-2 {
+  transition: all 0.3s;
+  box-sizing: border-box;
+  transform: rotate(-135deg);
+  margin-top: -9px;
+}
+
+
+.app__toggle,
+.close__sidebar{
+  display: none;
+}
+
+.section__opportunities{
+  background: url("/hero.jpeg");
+  isolation: isolate;
+}
+
+.section__opportunities::after{
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: .8;
+  z-index: -1;
+  background-color: #056c89d7;
+}
+
+.opp__repeated{
+  width: 25rem;
+  max-width: 100%;
+}
+
+.stat__icon{
+  width: 6rem;
+  height: 6rem;
+  background-color: #FD805A;
+}
+
+.story__repeated{
+  width: 30%;
+}
+
+.team__member img,
+.story__repeated img{
+  width: 7rem;
+  height: 7rem;
+}
+
+
+.story__repeated img{
+  position: absolute;
+  left: 50%;
+  top: -3.5rem;
+  transform: translateX(-50%);
+
+}
+
+q:before,
+q:after{
+  font-size: 3rem;
+  font-weight: 900;
+  color: var(--color-secondary);
+  position: absolute;
+}
+
+q:before{
+  left: 0;
+  top: 2rem;
+}
+
+.value img{
+  width: 2rem;
+}
+
+.member__name::after{
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background-color: var(--color-main);
+}
+
+.contact__form{
+  width: 35rem;
+  max-width: 100%;
+  margin-inline: auto;
 }

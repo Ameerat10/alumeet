@@ -4,6 +4,10 @@ export const menuItems = [
         link: '/'
     },
     {
+        name: 'About',
+        link: '/about'
+    },
+    {
         name: 'Upcoming events',
         link: '/upcoming-events'
     },
