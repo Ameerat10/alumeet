@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-export const API_URL = "https://alumeet.onrender.com/";
+export const API_URL = "https://alumeet.onrender.com";
 
 axios.defaults.withCredentials = true;
 
