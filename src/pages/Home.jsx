@@ -35,6 +35,23 @@ function Home(props) {
 
         getAllUpcomingEvents();
     }, [])
+
+
+    const firstRow = [
+        {
+            title:"Welcome to our Alumni",
+            content:"Alumeet is on a mission to foster a thriving community of university alumni. Our goal is to connect, collaborate, and provide opportunities for personal and professional grow. Join us in building a supportive network that fuels personal and professional growth, creating a dynamic space where your success story begins."
+        },
+        {
+            title:"Beyond Graduation: Your Lifelong Network",
+            content:"Alumeet extends a warm welcome to a lifelong network that goes beyond graduation. Our platform is more than just a space for events; Embrace the opportunity to stay connected with your alma mater and fellow graduates, unlocking a world of possibilities for mentorship, collaboration, and shared success"
+        },
+        {
+            title:"Empowering Alumni Excellence",
+            content:"Step into Alumeet, a platform committed to empowering alumni excellence. Join a community that values continuous learning, celebrates achievements, and supports each member on their unique journey toward excellence. Together, let's shape a future where alumni thrive and inspire."
+        }
+    ]
+    
     
     return (
         <>
@@ -55,14 +72,14 @@ function Home(props) {
 
                 <section className="bg__ciel welcome__sec flex padded__section">
                     <div className="container mx-auto w-4/5 flex items-center justify-between gap-5">
-                        {new Array(3).fill(0).map((_, i)=>(
+                        {firstRow.map((row, i)=>(
                             <div className="card flex flex-col items-center gap-2" key={i}>
                                 <div className="welcome__img">
                                     <img src={`/ev${i+1}.svg`} alt="" className='' />
                                 </div>
                                 <div className="flex flex-col justify-center">
-                                    <p className='text-xl text-center font-700'>Lorem ipsum dolor sit amet </p>
-                                    <p className='text-md text-center my-1'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, voluptatum?</p>
+                                    <p className='text-xl text-center font-700'>{row.title} </p>
+                                    <p className='text-md text-center my-1'>{row.content}</p>
                                 </div>
                             </div>
                         

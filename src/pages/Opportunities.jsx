@@ -48,7 +48,7 @@ function Opportunities(props) {
                     </div>
                 </div>
                 <p className='mt-3 w-3/4 mb-5'>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia molestiae quibusdam veritatis, error, ab repellat labore illum quo, natus voluptas consectetur in laboriosam? Harum, error amet ducimus reiciendis accusamus dignissimos?
+                Unlock a world of possibilities on Alumeet's Opportunities Page. Discover a myriad of avenues for personal and professional growth, where exciting opportunities await. From career advancements to community engagement, seize the chance to elevate your journey and make a lasting impact. Your next opportunity is just a click away – explore, connect, and thrive with Alumeet.
                 </p>
 
                 {

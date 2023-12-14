@@ -82,7 +82,7 @@ function AllEvents(props) {
                     </div>
                 </div>
                 <p className='mt-3 w-3/4 mb-5'>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia molestiae quibusdam veritatis, error, ab repellat labore illum quo, natus voluptas consectetur in laboriosam? Harum, error amet ducimus reiciendis accusamus dignissimos?
+                Welcome to the vibrant hub of alumni gatherings, where connections are made, cherished memories are created, and the heartbeat of our alumni community thrives. Explore the diverse array of events that bring alumni together, fostering camaraderie, professional growth, and unforgettable moments.
                 </p>
 
                 <div className="table__container">

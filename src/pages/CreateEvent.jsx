@@ -67,7 +67,7 @@ function CreateEvent(props) {
                     <h3 className="app__section__title">Create Event</h3>
                 </div>
                 <p className='mt-3 w-3/4 mb-5'>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia molestiae quibusdam veritatis, error, ab repellat labore illum quo, natus voluptas consectetur in laboriosam? Harum, error amet ducimus reiciendis accusamus dignissimos?
+                Planning an alumni event? The journey to your event starts here, so tell us all about it. Start by providing the essential event information here. This is your opportunity to curate an experience that reflects your alumni community's spirit and ambitions. Every event begins with a vision, and your vision is the key to an exceptional alumni experience.
                 </p>
 
                 <form onSubmit={handleSubmit} className='w-1/2 create__event--form flex flex-col items-center gap-3'>

@@ -64,7 +64,7 @@ function Register(props) {
                 <section ref={messageRef} className='flex padded__section'>
                     <div className="container register__form--sec mx-auto w-4/5 flex flex-col items-center gap-3">
                         <h3 className='text-2xl text-center'>Alumeet Registration Form</h3>
-                        <p className='text-center w-3/4'>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perferendis similique labore obcaecati incidunt sit natus repellendus, sunt magnam minus aliquid veritatis eveniet, praesentium nihil accusamus deleniti dolorum error. Unde, sit.</p>
+                        <p className='text-center w-3/4'> Be a part of our vibrant alumni community and embark on a journey filled with networking, growth, and connections. Register now to start your alumni adventure !</p>
                         <div className="dotted__line mx-auto w-1/2"></div>
 
                         <form onSubmit={handleSubmit} className='w-1/2 register__form flex flex-col items-center gap-3'>

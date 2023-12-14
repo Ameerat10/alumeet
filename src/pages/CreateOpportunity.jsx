@@ -69,7 +69,7 @@ function CreateOpportunity(props) {
                     <h3 className="app__section__title">Create Opportunity</h3>
                 </div>
                 <p className='mt-3 w-3/4 mb-5'>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia molestiae quibusdam veritatis, error, ab repellat labore illum quo, natus voluptas consectetur in laboriosam? Harum, error amet ducimus reiciendis accusamus dignissimos?
+                Craft experiences, foster collaborations, and ignite growth by bringing valuable opportunities to life. Your initiative has the potential to inspire, empower, and leave a lasting impact. Step into the creator's seat, and let your vision for opportunity take flight on Alumeet.
                 </p>
 
                 <form onSubmit={handleSubmit} className='w-1/2 create__opportunity--form flex flex-col items-center gap-3'>

@@ -104,7 +104,7 @@ function MyEvents(props) {
                     </div>
                 </div>
                 <p className='mt-3 w-3/4 mb-5'>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia molestiae quibusdam veritatis, error, ab repellat labore illum quo, natus voluptas consectetur in laboriosam? Harum, error amet ducimus reiciendis accusamus dignissimos?
+                Welcome to your space, where your events take center stage, and your alumni story unfolds. Explore the events you've created, each one a testament to your impact on our vibrant alumni community. 
                 </p>
 
                 <div className="table__container">
