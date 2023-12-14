@@ -1,5 +1,6 @@
 import axios from 'axios'
 
+// export const API_URL = "http://localhost:8000";
 export const API_URL = "https://alumeet.onrender.com";
 
 axios.defaults.withCredentials = true;
@@ -39,6 +40,44 @@ export async function logout(){
             )
             .then(response => response.data)
 }
+
+export async function getUsers(){
+    const url = `${API_URL}/users`
+    return axios.get(
+            url,
+            )
+            .then(response => response.data)
+
+}
+
+export async function deleteUser(id){
+    const url = `${API_URL}/users/${id}`
+    return axios.delete(
+            url,
+            )
+            .then(response => response.data)
+
+}
+
+export async function updateUser(id, data){
+    const url = `${API_URL}/users/${id}`
+    return axios.put(
+            url, data
+            )
+            .then(response => response.data)
+
+
+}
+
+export async function getUser(id){
+    const url = `${API_URL}/users/${id}`
+    return axios.get(
+            url,
+            )
+            .then(response => response.data)
+
+}
+
 
 
 export async function createEvent(data){

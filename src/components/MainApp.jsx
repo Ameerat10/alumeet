@@ -37,6 +37,8 @@ function MainApp() {
         }
     ]
 
+    const [menuList, setMenuList] = useState(appMenuItems);
+
     const [loading, setLoading] = useState(false);
     
     useEffect(()=>{
@@ -51,8 +53,26 @@ function MainApp() {
                 setLoading(true);
                 const response = await getCurrentUser(token);
                 if(response.data.user){
-                    console.log(response.data.user)
-                    setUser(response.data.user)
+                    const data = response.data.user
+                    setUser(data)
+                    console.log(data.role)
+                    if(data.role === "manager"){
+                        setMenuList(
+                        [
+                            ...appMenuItems,
+                            {
+                                name:"Manage Users",
+                                path:"/manage-users",
+                                icon:"fas fa-users"
+                            }
+                        ])                        
+                    }
+
+                    else{
+                        if(window.location.pathname.includes("/manage-users")){
+                            navigate("/dashboard")
+                        }
+                    }
                 }    
                 
                 else{
@@ -94,7 +114,7 @@ function MainApp() {
                     <div className='text-2xl font-700'>ALUMEET</div>
                     <nav className='flex-1 w-full'>
                         <ul className='flex flex-col gap-1'>
-                            {appMenuItems.map((item, i)=>(
+                            {menuList.map((item, i)=>(
                                 <li key={i} className='flex justify-center'>
                                     <NavLink to={item.path} className={`flex gap-1 items-center w-full text-white`}>
                                         <i className={item.icon}></i>

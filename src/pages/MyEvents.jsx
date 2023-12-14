@@ -121,38 +121,45 @@ function MyEvents(props) {
                             </div>
                             :
                             <div className="table__body">
-                                {events.map((row, i)=>(
-                                    <div className="row flex">
+                                {events.length === 0 ?
+                                    <p className='text-center py-2'>No events yet</p>
+                                    :
 
-                                        <p className='flex-1 text-center ellipsis'>{i+1}</p>
-                                        <p className='flex-1 text-center ellipsis'>{row.title}</p>
-                                        <p className='flex-1 text-center ellipsis'>{row.category}</p>
-                                        <p className='flex-1 text-center ellipsis'>{new Date(row.date).toLocaleDateString()}</p>
-                                        <p className='flex-1 text-center ellipsis'>{row.location}</p>
-                                        <p className='flex-1 text-center ellipsis'>{row.startTime}</p>
-                                        <p className='flex-1 text-center ellipsis'>{row.endTime}</p>
-                                        <p className='flex-1 text-center ellipsis'>
-                                            {
-                                                row.image?
-                                                <img src={`${API_URL}/images/${row.image}`} alt="" className='table__img' />
-                                                :
-                                                "No Image"
-                                            }
-                                        </p>
+                                    <>
+                                        {events.map((row, i)=>(
+                                            <div className="row flex">
 
-                                        <p className='flex gap-1 items-center justify-between table__action'>
-                                            <i className='fas cursor-pointer fa-eye' onClick={()=>navigate(`/event/${row._id}`)}></i>
-                                            <i className='fas cursor-pointer fa-edit' onClick={()=>navigate(`/event/${row._id}/edit`)}></i>
-                                            <div className='delete__icon'>
-                                                {
-                                                    deleting && currentId === row._id  ?
-                                                    <SmallLoader/> :
-                                                    <i onClick={()=>handleDeleteEvent(row._id)} className='fas cursor-pointer fa-trash'></i>
-                                                }
+                                                <p className='flex-1 text-center ellipsis'>{i+1}</p>
+                                                <p className='flex-1 text-center ellipsis'>{row.title}</p>
+                                                <p className='flex-1 text-center ellipsis'>{row.category}</p>
+                                                <p className='flex-1 text-center ellipsis'>{new Date(row.date).toLocaleDateString()}</p>
+                                                <p className='flex-1 text-center ellipsis'>{row.location}</p>
+                                                <p className='flex-1 text-center ellipsis'>{row.startTime}</p>
+                                                <p className='flex-1 text-center ellipsis'>{row.endTime}</p>
+                                                <p className='flex-1 text-center ellipsis'>
+                                                    {
+                                                        row.image?
+                                                        <img src={`${API_URL}/images/${row.image}`} alt="" className='table__img' />
+                                                        :
+                                                        "No Image"
+                                                    }
+                                                </p>
+
+                                                <p className='flex gap-1 items-center justify-between table__action'>
+                                                    <i className='fas cursor-pointer fa-eye' onClick={()=>navigate(`/event/${row._id}`)}></i>
+                                                    <i className='fas cursor-pointer fa-edit' onClick={()=>navigate(`/event/${row._id}/edit`)}></i>
+                                                    <div className='delete__icon'>
+                                                        {
+                                                            deleting && currentId === row._id  ?
+                                                            <SmallLoader/> :
+                                                            <i onClick={()=>handleDeleteEvent(row._id)} className='fas cursor-pointer fa-trash'></i>
+                                                        }
+                                                    </div>
+                                                </p>
                                             </div>
-                                        </p>
-                                    </div>
-                                ))
+                                        ))                                
+                                        }
+                                    </>
 
                                 }
                             </div>

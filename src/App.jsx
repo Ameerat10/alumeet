@@ -21,6 +21,9 @@ import AppContext from './AppContext';
 import { getCurrentUser } from './services/apis';
 import CreateOpportunity from './pages/CreateOpportunity';
 import AboutUs from './pages/AboutUs'
+import ManageUsers from './pages/ManageUsers'
+import AddUser from './pages/AddUser'
+import UpdateUser from './pages/UpdateUser'
 
 function App() {
 
@@ -83,6 +86,9 @@ function App() {
             <Route path='opportunities' element={<Opportunities/>}/>
             <Route path='opportunities/create' element={<CreateOpportunity/>}/>
 
+            <Route path='manage-users' element={<ManageUsers/>}/>
+            <Route path='manage-users/add' element={<AddUser/>}/>
+            <Route path='manage-users/:id/edit' element={<UpdateUser/>}/>
 
           </Route>
 
