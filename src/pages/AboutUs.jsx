@@ -103,7 +103,7 @@ function AboutUs(props) {
                                         <div className='flex flex-col items-center gap-1'>
                                             <h5 className='text-center text-yellow text-xl mt-1 member__name pb-1 relative'>Ameerat Ademuiya</h5>
                                             <p className='font-600'>Alumeet Representative</p>
-                                            <p className='text-center'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, voluptatem.</p>
+                                            <p className='text-center'>With experience in alumni management and career development, Mike is committed to ensuring that all alumni have the resources and opportunities they need to succeed. He firmly believes that alumni can leverage their collective strength to create meaningful opportunities in their professional lives.</p>
                                         </div>
                                     </div>
                                 
